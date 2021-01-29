@@ -6,10 +6,10 @@ PDF version of book
 
 1. Set environment variable **GOPATH** 
     ```export GOPATH=$HOME/gobook```
-<br>
+<br/>
 2. Fetch, build, install hello world app
     ```go get gopl.io/ch1/helloworld```
-<br>
+<br/>
 3. Run the app
     ```$GOPATH/bin/helloworld```
 
