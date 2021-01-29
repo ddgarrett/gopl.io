@@ -1,3 +1,8 @@
+## Note
+This repository contains additions to the original repo that are **not** meant to be pushed back to the original repo. This includes:
+- My notes, `book_notes.md`, in the same directory as this `README.md`
+- Answers to exercises in **TODO: add location(s) of exercise solutions**
+
 # The Go Programming Language
 
 This repository provides the downloadable example programs
