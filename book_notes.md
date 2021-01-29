@@ -24,7 +24,7 @@ PDF version of book
 
 
 
-**NOTE**: the above actually fetched all of the source files for the book into ```$HOME/gobook/src``` creating both ```/src``` and ```/bin``` directories.
+**NOTE**: the above actually fetched all of the source files for the book into `$HOME/gobook/src` creating both `/src` and `/bin` directories.
 
 
 Some useful links:
