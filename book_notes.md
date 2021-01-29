@@ -17,9 +17,9 @@ PDF version of book
 
 Some useful links:
 - GoLang documentation: https://golang.org
-- Go Blog: blog.golang.org
+- Go Blog: https://blog.golang.org
 - Package documentations: https://golang.org/pkg
-- Playground where you can testout code: play.golang.org
+- Playground where you can testout code: https://play.golang.org
 
 Note that the playground provides a persistent link, so it's possible to use it to store code snippets or share code within documents. However only starndard libraries can be used and some functions, such as networking, are restriced.
 
