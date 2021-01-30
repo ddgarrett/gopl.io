@@ -1,5 +1,5 @@
 ## Note
-This repository contains additions to the original repo that are **not** meant to be pushed back to the original repo. This includes:
+This repository contains additions to the original repo that are **not** meant to be pushed back to the original/upstream repo,  `adonovan/gopl.io`. This repo includes:
 - My notes, `book_notes.md`, in the same directory as this `README.md`
 - Answers to exercises in **TODO: add location(s) of exercise solutions**
 
