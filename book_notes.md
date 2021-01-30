@@ -36,3 +36,11 @@ Some useful links:
 Note that the playground provides a persistent link, so it's possible to use it to store code snippets or share code within documents. However only the standard libraries can be used and some functions, such as networking, are restriced.
 
 
+## Chapter 1
+
+1. Command line arguments available via `os` package
+   - `os.Args` is a slice of strings
+   - `os.Args[0]` is the command name
+   - `strings.Join(os.Args[1:], " ")` would produce a string of all arguments
+2. See exercises 1.1 through 1.3 in `ex1` folder, page 8 of PDF.
+3. 
