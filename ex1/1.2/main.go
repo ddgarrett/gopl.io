@@ -16,5 +16,3 @@ func main() {
 		fmt.Printf("%d: %s \n", i, arg)
 	}
 }
-
-//!-
