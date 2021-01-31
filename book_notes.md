@@ -42,5 +42,5 @@ Note that the playground provides a persistent link, so it's possible to use it 
    - `os.Args` is a slice of strings
    - `os.Args[0]` is the command name
    - `strings.Join(os.Args[1:], " ")` would produce a string of all arguments
-2. See exercises 1.1 through 1.3 in `ex1` folder, page 8 of PDF.
+2. See solutions to PDF page 8 exercises 1.1 through 1.3 in folder `ex1`.
 3. 
