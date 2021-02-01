@@ -44,7 +44,7 @@ Note that the playground provides a persistent link, so it's possible to use it 
    - `strings.Join(os.Args[1:], " ")` would produce a string of all arguments
 2. See solutions to PDF page 8 exercises 1.1 through 1.3 in folder [ex1](https://github.com/ddgarrett/gopl.io/tree/master/ex1).
 3. To create  a map with a string key and int values: `counts := make(map[string]int)`.
-4.To then read input file, counting occurrences of each unique line: 
+4. To then read input file, counting occurrences of each unique line: 
 
     ```
         input := bufio.NewScanner(os.Stdin)
