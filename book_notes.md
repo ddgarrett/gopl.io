@@ -55,4 +55,4 @@ Note that the playground provides a persistent link, so it's possible to use it 
 
 5. For complete example see [.../ch1/dup1/main.go](https://github.com/ddgarrett/gopl.io/blob/master/ch1/dup1/main.go)
 6. Printf format strings see https://golang.org/pkg/fmt/
-7. See solution to PDF page 13 exercise 1.4 in folder[ex1](https://github.com/ddgarrett/gopl.io/tree/master/ex1/1.4).
+7. See solution to PDF page 13 exercise 1.4 in folder [ex1/1.4](https://github.com/ddgarrett/gopl.io/tree/master/ex1/1.4).
