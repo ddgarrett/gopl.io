@@ -10,7 +10,6 @@ package main
 
 import (
 	"image"
-	"image/color"
 	"image/color/palette"
 	"image/gif"
 	"io"
@@ -31,32 +30,14 @@ import (
 // var palette = []color.Color{color.White, color.Black}
 // Modified var from exercise 1.4
 // var palette = []color.Color{color.Black, color.RGBA{0x00, 0xff, 0x00, 0xff}}
-var myPalette = []color.Color{color.White, color.Black}
+var myPalette = palette.WebSafe
 
 const (
 	blackIndex = 0   // first color in palette
-	redIndex   = 115 // next color in palette
+	redIndex   = 115 // initial drawing color color in palette
 )
 
-// Initialize colors in palette
-func initPalette() {
-	/*
-		for j := uint8(16); j <= 255; j += 16 {
-			for k := uint8(16); k <= 255; k += 16 {
-				for l := uint8(16); l <= 255; l += 16 {
-					myPalette = append(myPalette, color.RGBA{j, k, l, uint8(255)})
-				}
-			}
-		}
-	*/
-
-	// try this palette
-	myPalette = palette.WebSafe
-}
-
 func main() {
-	initPalette()
-
 	//!-main
 	// The sequence of images is deterministic unless we seed
 	// the pseudo-random number generator using the current time.
@@ -85,6 +66,7 @@ func lissajous(out io.Writer) {
 		nframes = 64    // number of animation frames
 		delay   = 8     // delay between frames in 10ms units
 	)
+	// Set initial color
 	var colorIndex uint8 = redIndex
 	freq := rand.Float64() * 3.0 // relative frequency of y oscillator
 	anim := gif.GIF{LoopCount: nframes}
@@ -97,11 +79,12 @@ func lissajous(out io.Writer) {
 			y := math.Sin(t*freq + phase)
 			img.SetColorIndex(size+int(x*size+0.5), size+int(y*size+0.5),
 				colorIndex)
-			//colorIndex++
 		}
 		phase += 0.1
 		anim.Delay = append(anim.Delay, delay)
 		anim.Image = append(anim.Image, img)
+
+		// cycle through palette drawing colors
 		colorIndex++
 	}
 	gif.EncodeAll(out, &anim) // NOTE: ignoring encoding errors
