@@ -9,7 +9,7 @@
 // ALSO note that in using os.Stdin for input requires a
 // ctl-d to generate an EOF
 
-// To run test use > ./1.4 f1.txt f2.txt
+// To run test use > ./1.4_dup2 f1.txt f2.txt
 
 // Dup2 prints the count and text of lines that appear more than once
 // in the input.  It reads from stdin or from a list of named files.

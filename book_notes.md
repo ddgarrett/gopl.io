@@ -55,5 +55,5 @@ Note that the playground provides a persistent link, so it's possible to use it 
 
 5. For complete example see [.../ch1/dup1/main.go](https://github.com/ddgarrett/gopl.io/blob/master/ch1/dup1/main.go)
 6. Printf format strings see https://golang.org/pkg/fmt/
-7. See solution to PDF page 13 exercise 1.4, finding duplicate lines, in folder [ex1/1.4](./ex1/1.4).
-8. See solutions to PDF page 15 animated gif exercises 1.5 and 1.6 in [ex1/1.5](./ex1/1.5) and [ex1/1.6](./ex1/1.6)
+7. See solution to PDF page 13 exercise 1.4, finding duplicate lines, in folder [ex1/1.4_dup2](./ex1/1.4_dup2).
+8. See solutions to PDF page 15 animated gif exercises 1.5 and 1.6 in [ex1/1.5_lissajous](./ex1/1.5_lissajous) and [ex1/1.6_lissajous](./ex1/1.6_lissajous)
