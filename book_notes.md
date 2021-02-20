@@ -118,7 +118,7 @@ Functions: make len cap new append copy close delete
 	* conversion must be explicit even if same underlying data type, via T(x) where T = type
 	* Types usually used for structures?
 	* Types also allow you to define functions associated with the type - more on this in Chp 6
-	* example of two non-comparable types and associating functions with a type
+	* example of two non-comparable types and associating functions with a type. In particular, defining String() will be used by fmt package:
 
 	```
 	// cannot directly compare two variables of these different types
@@ -130,6 +130,9 @@ Functions: make len cap new append copy close delete
 	func (c Celsius) String() string { return fmt.Sprintf("%g°C", c) }
 	c := FToC(212.0)
 	fmt.Println(c.String())  // "100°C"
+	fmt.Printf("%v\n", c)    // "100°C"; no need to call String explicitly
+	fmt.Printf("%s\n", c)    // "100°C"
+	fmt.Println(c)           // "100°C"
 	```
 
 7. Packages and Files p. 41
