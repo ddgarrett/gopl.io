@@ -36,7 +36,7 @@ Some useful links:
 Note that the playground provides a persistent link, so it's possible to use it to store code snippets or share code within documents. However only the standard libraries can be used and some functions, such as networking, are restriced.
 
 
-## Chapter 1
+## Chapter 1 - Tutorial
 
 1. Command line arguments available via `os` package
    - `os.Args` is a slice of strings
@@ -57,3 +57,39 @@ Note that the playground provides a persistent link, so it's possible to use it 
 6. Printf format strings see https://golang.org/pkg/fmt/
 7. See solution to PDF page 13 exercise 1.4, finding duplicate lines, in folder [ex1/1.4_dup2](./ex1/1.4_dup2).
 8. See solutions to PDF page 15 animated gif exercises 1.5 and 1.6 in [ex1/1.5_lissajous](./ex1/1.5_lissajous) and [ex1/1.6_lissajous](./ex1/1.6_lissajous)
+9. See solutions to PDF page 17 fetch exercises 1.7 - 1.9 in [ex1](./ex1)
+10. See solution to PDF page 22 Lissajous server [1.12_lissajous_server](./ex1/1.12_lissajous_server)
+
+## Chapter 2 - Program Structure
+1. 25 reserved keywords:
+
+```
+break	    default	    func	interface	select
+case	    defer	    go	    map	        struct
+chan	    else	    goto	package	    switch
+const	    fallthrough	if	    range	    type
+continue	for	        import	return	    var
+```
+
+2. Three dozen predeclared names, not reserved but should not be redefined:
+
+```
+Constants:	true false iota nil
+	
+Types: 	    int int8 int16 int32 int64
+	        uint uint8 uint16 uint32 uint64 uintptr
+	        float32 float64 complex128 complex64
+	        bool byte rune string error
+        
+Functions: 	make len cap new append copy close delete
+	        complex real imag
+	        panic recover
+```
+
+3. Variables:
+    * Declared within function, local to function
+    * Declared outside function visible to all files with same package
+    * IF outside ofa funciton AND var name begins with uppercase, it is exported to all packages
+    * Camel case 
+    * Acronyms and initialism maintain case, such as `htmlEscape` or `escapeHTML` **not** `escapeHtml`
+4. 
