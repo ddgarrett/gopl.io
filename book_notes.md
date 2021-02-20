@@ -64,26 +64,26 @@ Note that the playground provides a persistent link, so it's possible to use it 
 1. 25 reserved keywords:
 
 ```
-break	    default	    func	interface	select
-case	    defer	    go	    map	        struct
+break	    default	    func	interface   select
+case	    defer	    go	        map	    struct
 chan	    else	    goto	package	    switch
-const	    fallthrough	if	    range	    type
-continue	for	        import	return	    var
+const	    fallthrough	    if	        range	    type
+continue    for             import	return	    var
 ```
 
 2. Three dozen predeclared names, not reserved but should not be redefined:
 
 ```
-Constants:	true false iota nil
+Constants:  true false iota nil
 	
 Types: 	    int int8 int16 int32 int64
-	        uint uint8 uint16 uint32 uint64 uintptr
-	        float32 float64 complex128 complex64
-	        bool byte rune string error
+	    uint uint8 uint16 uint32 uint64 uintptr
+	    float32 float64 complex128 complex64
+	    bool byte rune string error
         
-Functions: 	make len cap new append copy close delete
-	        complex real imag
-	        panic recover
+Functions: make len cap new append copy close delete
+	   complex real imag
+	   panic recover
 ```
 
 3. Variables:
