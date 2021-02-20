@@ -92,4 +92,43 @@ Functions: make len cap new append copy close delete
     * IF outside ofa funciton AND var name begins with uppercase, it is exported to all packages
     * Camel case 
     * Acronyms and initialism maintain case, such as `htmlEscape` or `escapeHTML` **not** `escapeHtml`
-4. 
+4. Variables: (p. 30)
+	* `var name type = expression`
+	* `var b, f, s = true, 2.3, "four" // bool, float64, string`
+	* `var f, err = os.Open(name) // os.Open returns a file and an error`  or
+	* `f, err := os.Open(name)`
+	* `t := 0.0`
+	* `i, j = j, i // swap values of i and j`
+
+5. Pointers (p. 32)
+
+```
+x := 1	
+p := &x         // p, of type *int, points to x
+fmt.Println(*p)	// "1"
+*p = 2	        // equivalent to x = 2
+fmt.Println(x)	// "2"
+```
+	* Pointer "zero" value is nil
+	* See [./ch2/echo4](./ch2/echo4) for example of flag package which uses pointers to parse command-line arguments
+
+6. Type declarations p. 39
+	* defines new named type
+	* conversion must be explicit even if same underlying data type, via T(x) where T = type
+	* example
+
+```
+// cannot directly compare two variables of these different types
+type Celsius float64
+type Fahrenheit float64
+```
+	* Types usually used for structures?
+	* Types also allow you to define functions associated with the type - more on this in Chp 6
+
+```
+func (c Celsius) String() string { return fmt.Sprintf("%g°C", c) }
+c := FToC(212.0)
+fmt.Println(c.String())  // "100°C"
+```
+
+7. Packages and Files p. 41
