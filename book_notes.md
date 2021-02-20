@@ -109,6 +109,7 @@ fmt.Println(*p)	// "1"
 *p = 2	        // equivalent to x = 2
 fmt.Println(x)	// "2"
 ```
+
 	* Pointer "zero" value is nil
 	* See [./ch2/echo4](./ch2/echo4) for example of flag package which uses pointers to parse command-line arguments
 
@@ -122,6 +123,7 @@ fmt.Println(x)	// "2"
 type Celsius float64
 type Fahrenheit float64
 ```
+
 	* Types usually used for structures?
 	* Types also allow you to define functions associated with the type - more on this in Chp 6
 
