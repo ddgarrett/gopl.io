@@ -105,14 +105,13 @@ Functions: make len cap new append copy close delete
 	* Pointer "zero" value is nil
 	* See [./ch2/echo4](./ch2/echo4) for example of flag package which uses pointers to parse command-line arguments
 
-```
-x := 1	
-p := &x         // p, of type *int, points to x
-fmt.Println(*p)	// "1"
-*p = 2	        // equivalent to x = 2
-fmt.Println(x)	// "2"
-```
-
+	```
+	x := 1	
+	p := &x         // p, of type *int, points to x
+	fmt.Println(*p)	// "1"
+	*p = 2	        // equivalent to x = 2
+	fmt.Println(x)	// "2"
+	```
 
 6. Type declarations p. 39
 	* defines new named type
