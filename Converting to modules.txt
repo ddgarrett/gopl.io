@@ -1,0 +1,10 @@
+
+go mod init github.com/ddgarrett/gopl.io
+
+go mod tidy
+
+cat go.mod
+cat go.sum
+
+git tag v0.1.0
+git push origin v0.1.0
