@@ -4,6 +4,8 @@
 * [Preface](#preface)
 * [Chapter 1 - Tutorial](#chapter-1---tutorial)
 * [Chapter 2 - Program Structure](#chapter-2---program-structure)
+* [Chapter 3 - Basic Data Types](#chapter-3---basic-data-types)
+* [Chapter 4 - Composite Types](#chapter-4---composite-types)
 
 ## Preface
 
@@ -182,4 +184,19 @@ Functions: make len cap new append copy close delete
 			}
 		}
 	```
-11. xxx 
+## Chapter 3 - Basic Data Types
+
+1. Integers (p. 51), Floating-Point (p. 56), complex numbers (p. 61), booleans (p. 63), Strings (p. 64), UTF-8 (p. 67), String to Number conversions (p. 75), constants (p. 75), constant generator iota (p. 77), untyped constants (p. 78)
+2. Variety of bit operations and examples, see p. 53
+3. **ToDo?**: exercises 3.1 - 3.4 on page 60. Different float64 svg drawings.
+4. **ToDo?**: exercises 3.5 - 3.9 on page 62. Different complex number drawings and other hi## gh precision computations big.Float and big.RAT)
+5. String escape charactes, p. 66
+6. Raw string literals with ` ``...`` ` backquotes instead of double quotes. No espcape sequences. May be spread over multiple lines.
+	* useful for regular expressions, HTML templates, JSON literals, command usage messages and others which span multiple lines.
+7. **TODO?**: exercises 3.10 - 3.12 string manipulation
+
+
+## Chapter 4 - Composite Types
+
+1. xxx
+
