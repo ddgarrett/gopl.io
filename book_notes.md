@@ -89,7 +89,7 @@ Functions: make len cap new append copy close delete
 3. Variables:
     * Declared within function, local to function
     * Declared outside function visible to all files with same package
-    * IF outside ofa funciton AND var name begins with uppercase, it is exported to all packages
+    * IF outside of a function AND var name begins with uppercase, it is exported to all packages
     * Camel case 
     * Acronyms and initialism maintain case, such as `htmlEscape` or `escapeHTML` **not** `escapeHtml`
 4. Variables: (p. 30)
