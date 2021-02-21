@@ -16,6 +16,7 @@ Allows spcecification of Lissajous parameters. The following parameters and defa
 package main
 
 import (
+	"fmt"
 	"image"
 	"image/color/palette"
 	"image/gif"
@@ -29,6 +30,7 @@ import (
 
 func main() {
 	http.HandleFunc("/", handler)
+	fmt.Println("lisening on http://localhost:8000 ")
 	log.Fatal(http.ListenAndServe("localhost:8000", nil))
 }
 
