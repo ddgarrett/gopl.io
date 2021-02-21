@@ -1,5 +1,10 @@
 # The Go Programming Language
 
+## Table of Contents
+* [Preface](#preface)
+* [Chapter 1 - Tutorial](#chapter-1-tutorial)
+* [Chapter 2 - Program Structure](#chapter-2-program-structure)
+
 ## Preface
 
 PDF version of book
