@@ -136,3 +136,10 @@ Functions: make len cap new append copy close delete
 	```
 
 7. Packages and Files p. 41
+	* One or more.go files within the same directory, usually all within directory same package name
+	* Each package is a separate name space
+	* Exported identifiers begin with uppercase letter
+	* Comment preceding package documents the package
+	* Only one file in the package should have such a comment and it should begin with a single line package summary
+	* **TODO?** exercise 2.1 - add Kelvin to tempconv pkg in Ch2
+8. xxx
