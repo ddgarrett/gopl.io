@@ -147,9 +147,12 @@ Functions: make len cap new append copy close delete
 	* Comment preceding package documents the package
 	* Only one file in the package should have such a comment and it should begin with a single line package summary
 	* **TODO?** exercise 2.1 - add Kelvin to tempconv pkg in Ch2
-8. Imports p. 42  **NOTE**: Modules has changed some of this
+
+
+8. Imports p. 42  **NOTE**: `GOPATH` has been deprecated by use of Modules
 	* path, such as `import ("gopl.io/ch2/tempconv")` would bind the short name `tempconv` to the package, allowing subsequent references such as `tempconv.CToF` (see gopl.io/ch2/cf)
 	* for above to work, would have to first execute `export GOPATH=$HOME/gobook` assuming source was intalled following directions at beginning of this document which would place it in `$HOME/gobook/src/gopl.io`
 	* or `export GOPATH=$HOME/Documents/GitHub`, since I keep my gopl.io source in `/home/doug/Documents/GitHub/src/gopl.io`
 	* `golang.org/x/tools/cmd/goimports` will add and remove import statements as needed
+
 9. xxx
