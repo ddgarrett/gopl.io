@@ -155,4 +155,31 @@ Functions: make len cap new append copy close delete
 	* or `export GOPATH=$HOME/Documents/GitHub`, since I keep my gopl.io source in `/home/doug/Documents/GitHub/src/gopl.io`
 	* `golang.org/x/tools/cmd/goimports` will add and remove import statements as needed
 
-9. xxx
+9. Package Initialization p. 44
+	* Package level variables. Can reference other package level variables or functions.
+	* If multiple .go in single package, order in which passed to compiler. Go tools sort names.
+	* Within file, initialized in order declared, except dependencies resolved first (as encountered in declaration?)
+	* `func init(){ /* ... */ }` **only** called automatically during init. Can not be referenced otherwise. For complex init, such as maps,tables.
+	* One package init at a time, last is `main`
+
+10. Scope of Variable p. 45
+	* Carefull in use of `:=` where you **want** to keep access to outer defined variable
+
+	```
+		if f, err := os.Open(fname); err != nil { // compile error: unused: f
+			return err
+		}
+		f.Stat()	// compile error: undefined f
+		f.Close()	// compile error: undefined f
+	```
+
+	```
+		var cwd string
+		func init() {
+			cwd, err := os.Getwd() // compile error: unused: cwd
+			if err != nil {
+				log.Fatalf("os.Getwd failed: %v", err)
+			}
+		}
+	```
+11. xxx 
