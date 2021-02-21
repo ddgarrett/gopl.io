@@ -174,7 +174,7 @@ Functions: make len cap new append copy close delete
 	```
 
 	```
-		var cwd string
+		var cwd string  // even if below compile, cwd would remain uninitialized
 		func init() {
 			cwd, err := os.Getwd() // compile error: unused: cwd
 			if err != nil {
