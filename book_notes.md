@@ -29,8 +29,6 @@ PDF version of book
     $GOPATH/bin/helloworld
     ```
 
-
-
 **NOTE**: the above actually fetched all of the source files for the book into `$HOME/gobook/src` creating both `/src` and `/bin` directories.
 
 
@@ -189,14 +187,23 @@ Functions: make len cap new append copy close delete
 1. Integers (p. 51), Floating-Point (p. 56), complex numbers (p. 61), booleans (p. 63), Strings (p. 64), UTF-8 (p. 67), String to Number conversions (p. 75), constants (p. 75), constant generator iota (p. 77), untyped constants (p. 78)
 2. Variety of bit operations and examples, see p. 53
 3. **ToDo?**: exercises 3.1 - 3.4 on page 60. Different float64 svg drawings.
-4. **ToDo?**: exercises 3.5 - 3.9 on page 62. Different complex number drawings and other hi## gh precision computations big.Float and big.RAT)
+4. **ToDo?**: exercises 3.5 - 3.9 on page 62. Different complex number drawings and other high precision computations big.Float and big.RAT)
 5. String escape charactes, p. 66
 6. Raw string literals with ` ``...`` ` backquotes instead of double quotes. No espcape sequences. May be spread over multiple lines.
 	* useful for regular expressions, HTML templates, JSON literals, command usage messages and others which span multiple lines.
-7. **TODO?**: exercises 3.10 - 3.12 string manipulation
+7. **TODO?**: exercises 3.10 - 3.12 on p. 74. String manipulation
 
 
 ## Chapter 4 - Composite Types
 
-1. xxx
+1. Arrays p. 81
+	* `r := [...]int{99: -1}`  array of 100 ints, all 0 except last one
+	* `func zero(ptr *[32]byte)` don't pass array directly, pass pointer instead
+	* **TODO?**: exercises 4.1, 4.2 on p. 84. SHA hashes on array of bytes.
+2. Slices p. 84
+	* 
+
+3. 
+
+
 
