@@ -216,7 +216,15 @@ Functions: make len cap new append copy close delete
 	s =[]int{}     // len(s) == 0  s != nil
 	```
 
-3. 
+3. Maps aka Hash Tables p. 93
+	*  `ages := map[string]int{"alice":31, "charlie": 34,} // initial values are optional`
+	*  `delete(ages,"alice") // remove an entry`
+	*  `ages["doug"] = 66  // add doug`
+	*  `for name, age := range ages {...}`
+	*  `ages["bob"] == 0 // true` 
+	*  `age, ok := ages["bob"]  // ok == false`
+
+4. 
 
 
 
