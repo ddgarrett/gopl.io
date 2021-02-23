@@ -1,11 +1,13 @@
 # The Go Programming Language
 
 ## Table of Contents
-* [Preface](#preface)
-* [Chapter 1 - Tutorial](#chapter-1---tutorial)
-* [Chapter 2 - Program Structure](#chapter-2---program-structure)
-* [Chapter 3 - Basic Data Types](#chapter-3---basic-data-types)
-* [Chapter 4 - Composite Types](#chapter-4---composite-types)
+- [The Go Programming Language](#the-go-programming-language)
+	- [Table of Contents](#table-of-contents)
+	- [Preface](#preface)
+	- [Chapter 1 - Tutorial](#chapter-1---tutorial)
+	- [Chapter 2 - Program Structure](#chapter-2---program-structure)
+	- [Chapter 3 - Basic Data Types](#chapter-3---basic-data-types)
+	- [Chapter 4 - Composite Types](#chapter-4---composite-types)
 
 ## Preface
 
@@ -201,7 +203,18 @@ Functions: make len cap new append copy close delete
 	* `func zero(ptr *[32]byte)` don't pass array directly, pass pointer instead
 	* **TODO?**: exercises 4.1, 4.2 on p. 84. SHA hashes on array of bytes.
 2. Slices p. 84
-	* 
+	* passing a slice to a function, actually passes and address to the underlying array, so no need to explicitly pass a pointer to the slice
+	* slices not comparable
+	* `runes = append(runes, r)`
+	* **TODO?**: exercises 4.3 - 4.7 on p. 93. Various manipulations of slices.
+	* if you need to test whether a slice is empty, use len(s) == 0 , not s == nil
+  
+	```
+	var s []int    // len(s) == 0  s == nil
+	s = nil        // len(s) == 0  s == nil
+	s = []int(nil) // len(s) == 0  s == nil
+	s =[]int{}     // len(s) == 0  s != nil
+	```
 
 3. 
 
