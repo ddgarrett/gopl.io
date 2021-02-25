@@ -8,6 +8,7 @@
 	- [Chapter 2 - Program Structure](#chapter-2---program-structure)
 	- [Chapter 3 - Basic Data Types](#chapter-3---basic-data-types)
 	- [Chapter 4 - Composite Types](#chapter-4---composite-types)
+	- [Chapter 5 - Functions](#chapter-5---functions)
 
 ## Preface
 
@@ -220,9 +221,9 @@ Functions: make len cap new append copy close delete
 10. ALL above available in bytes package, using bytes instead of strings
 11. Raw string literals with `` `...` `` backquotes instead of double quotes. No espcape sequences. May be spread over multiple lines.
 	* useful for regular expressions, HTML templates, JSON literals, command usage messages and others which span multiple lines.
-7. **TODO?**: exercises 3.10 - 3.12 on p. 74. String manipulation
-8. Conversion between strings and Numbers - p. 75
-9. Constants - p 75
+12. **TODO?**: exercises 3.10 - 3.12 on p. 74. String manipulation
+13. Conversion between strings and Numbers - p. 75
+14. Constants - p 75
     * `const pi = 3.14159 // approximately; math.Pi is a better approximation`
     * constant generator iota - p. 77  (exercise 3.13 p. 78)
     * untyped constants, up to 256 bits of precision - p. 78
@@ -314,63 +315,109 @@ Functions: make len cap new append copy close delete
    * There is also XML, ASN.1, and Google’s Protocol Buffers - supported by `encoding/json , encoding/xml , encoding/asn1`
    * Exercises 4.10 - 4.13 p. 112. Using JSON interface from GitHub, xkcd, [open movies](https://omdbapi.com/)
 
-```go
-type Movie struct {
-	Title  string
-	Year   int  `json:"released"`
-	Color  bool `json:"color,omitempty"`
-	Actors []string
-}
+		```go
+		type Movie struct {
+			Title  string
+			Year   int  `json:"released"`
+			Color  bool `json:"color,omitempty"`
+			Actors []string
+		}
 
-var movies = []Movie{
-	{Title: "Casablanca", Year: 1942, Color: false,
-		Actors: []string{"Humphrey Bogart", "Ingrid Bergman"}},
-	{Title: "Cool Hand Luke", Year: 1967, Color: true,
-		Actors: []string{"Paul Newman"}},
-	{Title: "Bullitt", Year: 1968, Color: true,
-		Actors: []string{"Steve McQueen", "Jacqueline Bisset"}},
-	// ...
-}
+		var movies = []Movie{
+			{Title: "Casablanca", Year: 1942, Color: false,
+				Actors: []string{"Humphrey Bogart", "Ingrid Bergman"}},
+			{Title: "Cool Hand Luke", Year: 1967, Color: true,
+				Actors: []string{"Paul Newman"}},
+			{Title: "Bullitt", Year: 1968, Color: true,
+				Actors: []string{"Steve McQueen", "Jacqueline Bisset"}},
+			// ...
+		}
 
-// convert struct to JSON string
-data, err := json.Marshal(movies)
-fmt.Printf("%s\n", data)
-/*  Output: (note: new lines added below)
-[{"Title":"Casablanca","released":1942,"Actors":["Humphrey Bogart","Ingrid Bergman"]},
-{"Title":"Cool Hand Luke","released":1967,"color":true,"Actors":["Paul Newman"]},
-{"Title":"Bullitt","released":1968,"color":true,"Actors":["Steve McQueen","Jacqueline Bisset"]}]
-*/
+		// convert struct to JSON string
+		data, err := json.Marshal(movies)
+		fmt.Printf("%s\n", data)
+		/*  Output: (note: new lines added below)
+		[{"Title":"Casablanca","released":1942,"Actors":["Humphrey Bogart","Ingrid Bergman"]},
+		{"Title":"Cool Hand Luke","released":1967,"color":true,"Actors":["Paul Newman"]},
+		{"Title":"Bullitt","released":1968,"color":true,"Actors":["Steve McQueen","Jacqueline Bisset"]}]
+		*/
 
-// more human readable, use indent
-data, err := json.MarshalIndent(movies, "", "    ")
+		// more human readable, use indent
+		data, err := json.MarshalIndent(movies, "", "    ")
 
-/* Output: 
-[
-    {
-        "Title": "Casablanca",
-        "released": 1942,
-        "Actors": [
-            "Humphrey Bogart",
-            "Ingrid Bergman"
-        ]
-    },
-	...
-*/
+		/* Output: 
+		[
+			{
+				"Title": "Casablanca",
+				"released": 1942,
+				"Actors": [
+					"Humphrey Bogart",
+					"Ingrid Bergman"
+				]
+			},
+			...
+		*/
 
-// Unmarshalling similar - but we can selectively unmarshall fields
-// NOTE: unmarshalling - names are case insensitive, so "color" unmarshalls to "Color"
-// so no need for field tags just for different case names
-var titles []struct{ Title string ; Color bool}
-if err := json.Unmarshal(data, &titles); err != nil {
-    log.Fatalf("JSON unmarshaling failed: %s", err)
-}
-fmt.Printf("%+v \n",titles)
-/* Output:
-[{Title:Casablanca Color:false} {Title:Cool Hand Luke Color:true} {Title:Bullitt Color:true}] 
-*/
-```
+		// Unmarshalling similar - but we can selectively unmarshall fields
+		// NOTE: unmarshalling - names are case insensitive, so "color" unmarshalls to "Color"
+		// so no need for field tags just for different case names
+		var titles []struct{ Title string ; Color bool}
+		if err := json.Unmarshal(data, &titles); err != nil {
+			log.Fatalf("JSON unmarshaling failed: %s", err)
+		}
+		fmt.Printf("%+v \n",titles)
+		/* Output:
+		[{Title:Casablanca Color:false} {Title:Cool Hand Luke Color:true} {Title:Bullitt Color:true}] 
+		*/
+		```
 
 6. Text and HTML Templates - p. 113
+	* See also golang doc: [text/template](https://golang.org/pkg/text/template/) and [html/template](https://golang.org/pkg/html/template/)
+	* Exercise 4.14 p. 117. Web server that queries GitHub.
 
+		```go
+		// convert boolean to Yes/No
+		func yesNo(b bool) string {
+			if b {
+				return "Yes"
+			}
+			return "No"
+		}
+
+		// format a string array
+		func formatStringArray(s []string) string {
+			return strings.Join(s,", ")
+		}
+
+		const templ = `Movies List
+		{{range .}}--------------------------------------------------------------------
+		Title: {{.Title | printf "%-18q"}}  Released:{{.Year}}  Color: {{.Color | yesNo}} 
+		Actors: {{.Actors | formatStringArray }}
+		{{end}}`
+
+		var report = textTemplate.Must(textTemplate.New("movieList").
+			Funcs(textTemplate.FuncMap{"yesNo": yesNo, "formatStringArray": formatStringArray}).
+			Parse(templ))
+
+		report.Execute(os.Stdout, movies)
+
+		/* Output:
+		Movies List
+		--------------------------------------------------------------------
+		Title: "Casablanca"        Released:1942  Color: No 
+		Actors: Humphrey Bogart, Ingrid Bergman
+		--------------------------------------------------------------------
+		Title: "Cool Hand Luke"    Released:1967  Color: Yes 
+		Actors: Paul Newman
+		--------------------------------------------------------------------
+		Title: "Bullitt"           Released:1968  Color: Yes 
+		Actors: Steve McQueen, Jacqueline Bisset
+		*/
+		```
+
+
+## Chapter 5 - Functions
+
+[Jupyter Chapter 5 code examples](http://localhost:8888/notebooks/home/GoFolder/gopherNotes/gopl_examples/gopl_examples.ipynb#chapter-5)
 
 
