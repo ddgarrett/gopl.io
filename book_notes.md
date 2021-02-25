@@ -15,19 +15,19 @@ PDF version of book
 
 1. Set environment variable **GOPATH** 
 
-    ```
+    ```go
     export GOPATH=$HOME/gobook
     ```
                 
 2. Fetch, build, install hello world app
 
-    ```
+    ```go
     go get gopl.io/ch1/helloworld
     ```
                 
 3. Run the app
 
-    ```
+    ```go
     $GOPATH/bin/helloworld
     ```
 
@@ -53,7 +53,7 @@ Note that the playground provides a persistent link, so it's possible to use it 
 3. To create  a map with a string key and int values: `counts := make(map[string]int)`.
 4. To then read input file, counting occurrences of each unique line: 
 
-    ```
+    ```go
         input := bufio.NewScanner(os.Stdin)
         for input.Scan() {
             counts[input.Text()]++
@@ -112,7 +112,7 @@ Functions: make len cap new append copy close delete
 	* Pointer "zero" value is nil
 	* See [./ch2/echo4](./ch2/echo4) for example of flag package which uses pointers to parse command-line arguments
 
-	```
+	```go
 	x := 1	
 	p := &x         // p, of type *int, points to x
 	fmt.Println(*p)	// "1"
@@ -127,13 +127,13 @@ Functions: make len cap new append copy close delete
 	* Types also allow you to define functions associated with the type - more on this in Chp 6
 	* example of two non-comparable types and associating functions with a type. In particular, defining String() will be used by fmt package:
 
-	```
+	```go
 	// cannot directly compare two variables of these different types
 	type Celsius float64
 	type Fahrenheit float64
 	```
 
-	```
+	```go
 	func (c Celsius) String() string { return fmt.Sprintf("%g°C", c) }
 	c := FToC(212.0)
 	fmt.Println(c.String())  // "100°C"
@@ -167,7 +167,7 @@ Functions: make len cap new append copy close delete
 10. Scope of Variable p. 45
 	* Carefull in use of `:=` where you **want** to keep access to outer defined variable
 
-	```
+	```go
 		if f, err := os.Open(fname); err != nil { // compile error: unused: f
 			return err
 		}
@@ -175,7 +175,7 @@ Functions: make len cap new append copy close delete
 		f.Close()	// compile error: undefined f
 	```
 
-	```
+	```go
 		var cwd string  // even if below compile, cwd would remain uninitialized
 		func init() {
 			cwd, err := os.Getwd() // compile error: unused: cwd
@@ -197,7 +197,7 @@ Functions: make len cap new append copy close delete
 8. Important packages for strings: bytes, strings, strconv, unicocode - p. 71
 9. Convert between string and []byte:
    
-	```
+	```go
 	s := "abc"
 	b := []byte(s)
 	s2 := string(b)
@@ -205,7 +205,7 @@ Functions: make len cap new append copy close delete
 
 9. Common string functions:
     
-	```
+	```go
 	func Contains(s, substr string) bool
 	func Count(s, sep string) int
 	func Fields(s string) []string         // split string by white space
@@ -239,14 +239,14 @@ Functions: make len cap new append copy close delete
 	* **TODO?**: exercises 4.3 - 4.7 on p. 93. Various manipulations of slices.
 	* if you need to test whether a slice is empty, use len(s) == 0 , not s == nil
   
-	```
+	```go
 	var s []int    // len(s) == 0  s == nil
 	s = nil        // len(s) == 0  s == nil
 	s = []int(nil) // len(s) == 0  s == nil
 	s =[]int{}     // len(s) == 0  s != nil
 	```
 
-	```
+	```go
 	t := make([]int,3,6)       // make([]T,len, cap), len == 3, cap == 6
 	t = append(t, 100)         // len == 4, cap == 6
 	t = t[:6]                  // now len == 6, okay as long as <= capacity
@@ -269,7 +269,7 @@ Functions: make len cap new append copy close delete
 	* Structu embedding - p. 104
 	* Examples:
 
-		```
+		```go
 		type Employee struct {
 			ID         int
 			Name       string
