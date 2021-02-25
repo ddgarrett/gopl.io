@@ -100,12 +100,15 @@ Functions: make len cap new append copy close delete
     * Camel case 
     * Acronyms and initialism maintain case, such as `htmlEscape` or `escapeHTML` **not** `escapeHtml`
 4. Variables: (p. 30)
-	* `var name type = expression`
-	* `var b, f, s = true, 2.3, "four" // bool, float64, string`
-	* `var f, err = os.Open(name) // os.Open returns a file and an error`  or
-	* `f, err := os.Open(name)`
-	* `t := 0.0`
-	* `i, j = j, i // swap values of i and j`
+
+	```go
+	var name type = expression
+	var b, f, s = true, 2.3, "four" // bool, float64, string
+	var f, err = os.Open(name) // os.Open returns a file and an error... or
+	f, err := os.Open(name)
+	t := 0.0
+	i, j = j, i // swap values of i and j
+	```
 
 5. Pointers (p. 32)
 
@@ -215,7 +218,7 @@ Functions: make len cap new append copy close delete
 	```
 
 10. ALL above available in bytes package, using bytes instead of strings
-11. Raw string literals with ` ``...`` ` backquotes instead of double quotes. No espcape sequences. May be spread over multiple lines.
+11. Raw string literals with `` `...` `` backquotes instead of double quotes. No espcape sequences. May be spread over multiple lines.
 	* useful for regular expressions, HTML templates, JSON literals, command usage messages and others which span multiple lines.
 7. **TODO?**: exercises 3.10 - 3.12 on p. 74. String manipulation
 8. Conversion between strings and Numbers - p. 75
@@ -256,15 +259,18 @@ Functions: make len cap new append copy close delete
 	```
 
 3. Maps aka Hash Tables p. 93
-	*  `ages := map[string]int{"alice":31, "charlie": 34,} // initial values are optional`
-	*  `delete(ages,"alice") // remove an entry`
-	*  `ages["doug"] = 66  // add doug`
-	*  `for name, age := range ages {...}`
-	*  `ages["bob"] == 0 // true` 
-	*  `age, ok := ages["bob"]  // ok == false`
 	*  **TODO?**: exercises 4.8, 4.9 on p. 99. Using maps to keep counts by key.
+ 
+	```go
+	ages := map[string]int{"alice":31, "charlie": 34,} // initial values are optional
+	delete(ages,"alice") // remove an entry
+	ages["doug"] = 66  // add doug
+	for name, age := range ages {...}
+	ages["bob"] == 0 // true
+	age, ok := ages["bob"]  // ok == false
+	```
 
-4. Structs p. 99
+1. Structs p. 99
 	* Comparing structs - p. 104
 	* Structu embedding - p. 104
 	* Examples:
