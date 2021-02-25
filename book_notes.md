@@ -335,8 +335,10 @@ var movies = []Movie{
 // convert struct to JSON string
 data, err := json.Marshal(movies)
 fmt.Printf("%s\n", data)
-/*  Output: 
-[{"Title":"Casablanca","released":1942,"Actors":["Humphrey Bogart","Ingrid Bergman"]},{"Title":"Cool Hand Luke","released":1967,"color":true,"Actors":["Paul Newman"]},{"Title":"Bullitt","released":1968,"color":true,"Actors":["Steve McQueen","Jacqueline Bisset"]}]
+/*  Output: (note: new lines added below)
+[{"Title":"Casablanca","released":1942,"Actors":["Humphrey Bogart","Ingrid Bergman"]},
+{"Title":"Cool Hand Luke","released":1967,"color":true,"Actors":["Paul Newman"]},
+{"Title":"Bullitt","released":1968,"color":true,"Actors":["Steve McQueen","Jacqueline Bisset"]}]
 */
 
 // more human readable, use indent
