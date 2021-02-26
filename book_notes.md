@@ -9,6 +9,7 @@
 	- [Chapter 3 - Basic Data Types](#chapter-3---basic-data-types)
 	- [Chapter 4 - Composite Types](#chapter-4---composite-types)
 	- [Chapter 5 - Functions](#chapter-5---functions)
+	- [Chapter 6 - Methods](#chapter-6---methods)
 
 ## Preface
 
@@ -273,7 +274,7 @@ Functions: make len cap new append copy close delete
 
 1. Structs p. 99
 	* Comparing structs - p. 104
-	* Structu embedding - p. 104
+	* Struct embedding - p. 104
 	* Examples:
 
 		```go
@@ -420,4 +421,101 @@ Functions: make len cap new append copy close delete
 
 [Jupyter Chapter 5 code examples](http://localhost:8888/notebooks/home/GoFolder/gopherNotes/gopl_examples/gopl_examples.ipynb#chapter-5)
 
+1. Function Declarations - p. 119.
+	* No default parameter values, no ability to set by name
+	* Passed by value
+	* pointers, map, function, channel passed by reference
+   
+		```go
+		func name(parameter-list) (result-list) {
+			body
+		}
 
+		// If no body, function implemented in another language
+		package math
+		func Sin(x float64) float64 // implemented in assembly language
+		```
+
+2. Recursion p. 121
+
+	* Exercises 5.1 - 5.4 p. 124. Traversing HTML documents.
+
+3. Multiple Return Values p. 124
+	* NOT limited to two return values: `func CountWordsAndImages(url string) (words, images int, err error) {`
+	* "bare return" returns the values by name, so in above, `return` would be equivalent to `return words, images, err`. NOTE: this requires named results.
+	* Exercises 5.5, 5.6 p. 127. Implement countWordsAndImages, modify `gopl.io/ch3/surface` to use named results and bare return
+
+4. Errors p. 127
+   1. Error-Handling Strategies p. 128
+   2. End of File (EOF) p. 131
+
+		* Section 7.11 presents a systematic way to distinguish certain errors. p. 206
+
+5. Function Values p. 132
+   	* functions are first class values in Go
+	* may be assigned to variable or passed as a parameter
+	* NOT comparable, can not be used as a key in a map
+	* Exercises 5.7 - 5.9 p. 134. [See gophernotes verison of 5.7](http://localhost:8888/notebooks/home/GoFolder/gopherNotes/gopl_examples/gopl_examples.ipynb#exercise-5.7) (only available on localhost server).
+
+		```go
+		// strings.Map applies a function to each character of a string , 
+		// joining the results to make another string
+		func add1(r rune) rune { return r + 1 }
+		fmt.Println(strings.Map(add1, "HAL-9000")) // "IBM.:111"
+		```
+
+6. Anonymous Functions p. 135
+	* named functions only at package level but can use anonymous within other functions
+	* `strings.Map(func(r rune) rune { return r + 1 }, "HAL-9000")` same as previous code
+	* Anonymous function can be assigned to a name, thus have a named function in effect
+	* Exercises 5.10 - 5.14 p. 140. How to describe?
+	* Be careful, in the example below the visitAll var must be defined before the function is defined. 
+
+
+		```go
+
+		// Error
+		visitAll := func(items []string) {
+			// ...
+			visitAll(m[item]) // compile error: undefined: visitAll
+			// ...
+		}
+
+
+		// this works
+		var visitAll func(items []string) 
+		visitAll = func(items []string) {
+			// ...
+			visitAll(m[item]) // okay - visitAll is defined
+			// ...
+		}
+		```
+	1. 5.6.1. Caveat: Capturation Iteration Variables p. 140
+		* Pitfalls of lexical scope rules
+
+7. Variadic Functions - varying number of arguments p. 142
+	* `func sum(vals ...int) int {`  elipsis indicates varying number of arguments
+	* to accept any type of variable use `interface{}` - see "Chapter 7 Interfaces"
+  		*  `func errorf(linenum int, format string, args ...interface{}) {`
+    * Exercises 5.15 - 5.17 p. 143. Using variadic functions for previously defined function. 
+	* CAN call it with a slice using ellipses after the slice variable name:
+
+		```go
+		values := []int{1, 2, 3, 4}
+		fmt.Println(sum(values...)) // "10"
+		```
+8. Deferred Function Calls p. 143
+    * executed in reverse order they are declared
+	* `defer resp.Body.Close()`
+	* `defer f.Close()`
+	* `defer mutex.Unlock()`
+	* Exercise 5.18 p. 148. Use defer to close file in fetch function
+
+9.  Panic p. 148
+	* defers are executed, stack trace printed
+
+10. Recover p. 151
+    
+## Chapter 6 - Methods
+
+[Jupyter Chapter 6 code examples](http://localhost:8888/notebooks/home/GoFolder/gopherNotes/gopl_examples/gopl_examples.ipynb#chapter-6)
