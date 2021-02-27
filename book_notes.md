@@ -10,6 +10,7 @@
 	- [Chapter 4 - Composite Types](#chapter-4---composite-types)
 	- [Chapter 5 - Functions](#chapter-5---functions)
 	- [Chapter 6 - Methods](#chapter-6---methods)
+	- [Chapter 7 - Interfaces](#chapter-7---interfaces)
 
 ## Preface
 
@@ -455,7 +456,7 @@ Functions: make len cap new append copy close delete
    	* functions are first class values in Go
 	* may be assigned to variable or passed as a parameter
 	* NOT comparable, can not be used as a key in a map
-	* Exercises 5.7 - 5.9 p. 134. [See gophernotes verison of 5.7](http://localhost:8888/notebooks/home/GoFolder/gopherNotes/gopl_examples/gopl_examples.ipynb#exercise-5.7) (only available on localhost server).
+	* Exercises 5.7 - 5.9 p. 134. [See gophernotes verison of 5.7 - Produce Outline of HTML from Website](http://localhost:8888/notebooks/home/GoFolder/gopherNotes/gopl_examples/gopl_examples.ipynb#exercise-5.7) (only available on localhost server).
 
 		```go
 		// strings.Map applies a function to each character of a string , 
@@ -518,4 +519,74 @@ Functions: make len cap new append copy close delete
     
 ## Chapter 6 - Methods
 
-[Jupyter Chapter 6 code examples](http://localhost:8888/notebooks/home/GoFolder/gopherNotes/gopl_examples/gopl_examples.ipynb#chapter-6)
+1. Exercises 6.1 through 6.5 p. 167. Extend a bit based set program.
+2. Encapsulation: exported outside package through capitalization of names.p. 168
+3. Getters **omit** `get...` prefix but use the `set...` prefix. Also omit `Fetch`, `Find` and `Lookup`.
+
+
+## Chapter 7 - Interfaces
+
+[Jupyter Chapter 7 Interfaces code examples](http://localhost:8888/notebooks/home/GoFolder/gopherNotes/gopl_examples/gopl_examples.ipynb#chapter-6-interfaces)
+
+1. Interfaces as contracts - p. 171
+   * reveals only *some* of the possible methods
+   * for example `Fprintf(w io.Writer, ...` requires w implment the `Writer interface` which requires a structure which implements a `Write(p []byte) (n int, err error)` method. 
+   * This can include `bytes.Buffer` or even your own custom writer, such as `ch7/bytecounter`
+   * `fmt.Stringer` - another key interface. Defines `String()` method that returns a string
+   * section 7.10 defines **how** `fmt` discovers which values satisfy the interface
+   * Exercise 7.1 - 7.3 p. 173. Using interface to "extend" existing stgructures or wrap existing
+
+		```go
+		// ByteCounter only counts the number of bytes written.
+		// Does not save the bytes anywhere?
+		type ByteCounter int
+		func (c *ByteCounter) Write(p []byte) (int, error) {
+			*c += ByteCounter(len(p)) // convert int to ByteCounter
+			return len(p), nil
+		}
+		```
+
+2. Interface Types p. 174
+   * Define minimum requirements to be considered an instance of the interface
+   * Usually very fine grained. `io.Reader` and `io.Closer` each define a single method: `Read` can `Close`
+   * Interfaces can also be embedded (combined). Example: `io.ReadWriter` combines `io.Reader` and `io.Writer` interfaces
+   * Exercises 7.4, 7.5 p. 175. Parse HTML from a string. Implement a `LimitReader`
+
+3. Interface Satisfaction p. 175
+   * posses all methods interface requires - "is a"
+   * note: that means a struct may satisfy an interface it didn't know about when it was created.
+   * **any value** satisfies the *empty interface* `interface{}` - see *type asserstion* in 7.10
+
+4. Parsing Flags with `flag.Value` p. 179
+   * Exercise 7.6, 7.7 p. 181. Extend previous Celsius struct
+
+5. Interface Values p. 101
+6. Sorting with sort.Interface p. 186
+   * See example at [Jupyter Chapter 7 Interfaces code examples](http://localhost:8888/notebooks/home/GoFolder/gopherNotes/gopl_examples/gopl_examples.ipynb#chapter-7-interfaces)
+   * Note that `sort` package provides versions to sort `[]int, []string,` and `[]float64`.
+   * Exercises 7.8 - 7.10 p. 191. Various uses of sort interface. 
+
+		```go
+		package sort
+		type Interface interface {
+			Len() int
+			Less(i, j int) bool // i, j are indices of sequence elements
+			Swap(i, j int)
+		}
+
+		// Sortable string slice
+		type StringSlice []string
+		func (p StringSlice) Len() int           { return len(p) }
+		func (p StringSlice) Less(i, j int) bool { return p[i] < p[j] }
+		func (p StringSlice) Swap(i, j int)      { p[i], p[j] = p[j], p[i] }
+
+		// sort it
+		sort.Sort(StringSlice(names)) // where names is a regular slice
+		```
+
+7. The http.Handler interface p. 191
+	* 
+
+
+8. xxx
+
